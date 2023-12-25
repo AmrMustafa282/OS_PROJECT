@@ -1,0 +1,27 @@
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: web-app-deployment
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: web-app
+    template:
+      metadata:
+        name: my-web-pod
+        labels:
+          app: web-app
+      spec:
+        containers:
+        - image: mostafamansour72/myproject
+          name: web-app-container
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests:
+              memory: "100Mi"
+          
+  
